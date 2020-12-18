@@ -36,6 +36,7 @@ function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
     autoUpdater.checkForUpdatesAndNotify()
+    //autoUpdater.checkForUpdates()
   }
 
   win.on('closed', () => {
@@ -84,23 +85,10 @@ ipcMain.on('app_version', (event)=>{
   event.sender.send('app_version', {version: app.getVersion()})
 })
 
-ipcMain.on('restart_app', () => {
-  autoUpdater.quitAndInstall();
-});
+// ipcMain.on('restart_app', () => {
+//   autoUpdater.quitAndInstall();
+// });
 
-autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-  const dialogOpts = {
-      type: 'info',
-      buttons: ['Restart', 'Not Now. On next Restart'],
-      title: 'Update',
-      message: process.platform === 'win32' ? releaseNotes : releaseName,
-      detail: 'A New Version has been Downloaded. Restart Now to Complete the Update.'
-  }
-
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-      if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
-})
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
