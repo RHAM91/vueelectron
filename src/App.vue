@@ -49,18 +49,18 @@ export default {
         this.version = arg.version
       });
 
-      // ipcRenderer.on('update_available', ()=>{
-      //   ipcRenderer.removeAllListeners('update_available');
-      //   this.message = 'A new update is available. Downloading now...';
-      //   this.noti_hidden = false
-      // })
+      ipcRenderer.on('update_available', ()=>{
+        ipcRenderer.removeAllListeners('update_available');
+        this.message = 'A new update is available. Downloading now...';
+        this.noti_hidden = false
+      })
 
-      // ipcRenderer.on('update_downloaded', () => {
-      //     ipcRenderer.removeAllListeners('update_downloaded');
-      //     this.message = 'Update Downloaded. It will be installed on restart. Restart now?';
-      //     this.btn_restart = false
-      //     this.noti_hidden = false
-      // });
+      ipcRenderer.on('update_downloaded', () => {
+          ipcRenderer.removeAllListeners('update_downloaded');
+          this.message = 'Update Downloaded. It will be installed on restart. Restart now?';
+          this.btn_restart = false
+          this.noti_hidden = false
+      });
     },
     closeNotificaction(){
       this.noti_hidden = true
