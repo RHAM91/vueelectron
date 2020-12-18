@@ -70,7 +70,7 @@ export default {
     }
   },
   mounted() {
-    this.do_action()
+    //this.do_action()
   },
 }
 </script>
