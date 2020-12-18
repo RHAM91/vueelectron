@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         do_action(){
-            this.info = 'Bienvenido a la version 1.3.4 re-buya!!!'
+            this.info = 'Bienvenido a la version 1.3.6 re-buya!!!'
         }
     },
 }
